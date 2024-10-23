@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* custom font add here  */
+/* @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'); */
+
+
+:root {
+    --bg-color-1: #21293c;
+    --top-header-bg: #171e2e;
+    --tab-color: #1a2234;
+    --sidebar-bg: #1c2333;
+    --bg-color-4: #1b212f;
+    --bg-color-5: #273042;
+    --bg-color-6: #252B3D;
+    --bg-color-7: #242c3e;
+    --bg-color-8: #2c3753;
+    --bg-color-9: #2A334D;
+    --bg-color-right-sidebar-1: #394768;
+    --bg-color-right-sidebar-2: #212a40;
+    --color-primary: #2294e6;
+    --color-primary2: #3faaf7;
+    --color-white: #ffffff;
+    --color-white-2: #c6c9cd;
+    --color-black: #000000;
+    --color-red: #ea4335;
+    --color-green: #04be7f;
+    --border-color-profile: #2f384b;
+    --button-color: #FFA665;
+    --text-color: #7d8da1;
+    --text-secondary: #abb8d4;
+    --scrollbar-color: #ffffff1a;
+    --hover-trade-color: #434F75;
+    --table-header-color: #41505E;
+    --indicator-color: #2E3552;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* for beautiful progress  */
+.stripe-1 {
+    background: repeating-linear-gradient(
+      45deg,
+      #606dbc,
+      #606dbc 10px,
+      #465298 10px,
+      #465298 20px
+    );
+  }
+  
