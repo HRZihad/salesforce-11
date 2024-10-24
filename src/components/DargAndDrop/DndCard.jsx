@@ -1,18 +1,19 @@
 // Card.js
 import { useDrag, useDrop } from "react-dnd";
 import { Avatar, Box, IconButton, Typography, useTheme } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
+
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 
 const ItemType = "CARD";
 
-export const DndCard = ({ id, index,  moveCard, label, IssueIdentification, firstBox }) => {
+export const DndCard = ({ id, index,  moveCard, task, label, IssueIdentification, firstBox }) => {
   const theme = useTheme();
-  console.log("label", label);
-  console.log("staus", IssueIdentification);
-  console.log("firstBox", firstBox);
+  // console.log("label", label);
+  // console.log("staus", IssueIdentification);
+  // console.log("firstBox", firstBox);
+  console.log("task", task);
   
 
   const [, ref] = useDrag({
@@ -48,19 +49,16 @@ export const DndCard = ({ id, index,  moveCard, label, IssueIdentification, firs
       <Box className="flex flex-col h-full">
         <Box className="rounded-3xl flex-1" sx={{ bgcolor: "primary.main", color: "text.black" }}>
           {/* item 1 */}
-          <Box className=" px-6 py-4 relative">
+          <Box className=" px-6 xl:px-0 py-4 relative" id={task}>
             <Box className=" flex items-center justify-between ">
               {/* there will be the connected box  */}
               <Box
-                className=" w-5 h-5 rounded-full absolute -left-3 hidden lg:block"
+                className=" w-5 h-5 rounded-full  -ml-3 hidden lg:block"
                 sx={{
                   bgcolor: theme.palette.primary.cardLightBg,
                 }}
               >
-                <div
-                  // ref={blueOneFirstChildrenRef}
-                  className=" w-3 h-3 rounded-full bg-[#83A2DB] m-1"
-                />
+                
               </Box>
               {/* avatar and text  */}
               <Box className=" flex w-[50%] items-center gap-x-2">
@@ -94,12 +92,12 @@ export const DndCard = ({ id, index,  moveCard, label, IssueIdentification, firs
               </Box>
               {/* there will be the right side connected box  */}
               <Box
-                className=" w-5 h-5 rounded-full absolute -right-3 hidden lg:block"
+                className=" w-5 h-5 rounded-full -mr-3 hidden lg:block"
                 sx={{
                   bgcolor: theme.palette.primary.cardLightBg,
                 }}
               >
-                <div className=" w-[6px] h-[6px] rounded-full bg-[#83A2DB] m-2" />
+                
               </Box>
             </Box>
           </Box>

@@ -8,8 +8,6 @@ import CaseCard from "./Card/CaseCard";
 import SuggestedKnowledgeTable from "./Table/SuggestedKnowledgeTable";
 import SupportTicketJourney from "./Chart/SupportTicketJourney";
 
-
-
 const CaseSection = () => {
   const theme = useTheme();
 
@@ -25,10 +23,10 @@ const CaseSection = () => {
   ];
 
   // Options for the chart
-  const options = {
-    title: "My Daily Activities",
-    pieHole: 0.4, // Donut chart style
-  };
+  // const options = {
+  //   title: "My Daily Activities",
+  //   pieHole: 0.4, // Donut chart style
+  // };
   // that is for chart information end here
   return (
     <Layout1>
@@ -157,7 +155,10 @@ const CaseSection = () => {
               <Box className=" mt-10 grid grid-cols-2 md:gap-2">
                 {/* left  */}
                 <Box className=" relative">
-                  <SupportTicketJourney />
+                  <SupportTicketJourney
+                    data={[80, 20]}
+                    colors={["#83A2DB", "#83A2DB"]}
+                  />
                   <Box
                     className="absolute -top-2 md:top-0 left-24 md:left-12 lg:left-24 xl:left-14 2xl:left-24 h-11 w-11 rounded-full border-[1px] border-solid border-[rgba(255,255,255,0.2)] flex items-center justify-center "
                     sx={{
@@ -172,7 +173,10 @@ const CaseSection = () => {
 
                 {/* right  */}
                 <Box className="relative ">
-                  <SupportTicketJourney/>
+                  <SupportTicketJourney
+                    data={[80, 20]}
+                    colors={["#CE6969", "#CE6969"]}
+                  />
                   <Box
                     className="absolute -top-2 md:top-0 left-24 md:left-12 lg:left-24 xl:left-14 2xl:left-24 h-11 w-11 rounded-full border-[1px] border-solid border-[rgba(255,255,255,0.2)] flex items-center justify-center "
                     sx={{

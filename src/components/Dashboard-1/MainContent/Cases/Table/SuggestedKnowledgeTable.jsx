@@ -2,13 +2,13 @@ import * as React from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { Box, Typography, useTheme } from "@mui/material";
-import { useEffect } from "react";
+import { Box, styled, Typography, useTheme } from "@mui/material";
+
 import { useState } from "react";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
@@ -40,22 +40,13 @@ const columns = [
   },
 ];
 
-function createData(
-  
-  subject,
-  status,
-  start_date,
-  end_date,
-  assigned_user,
-  uid
-) {
+function createData(subject, status, start_date, end_date, assigned_user, uid) {
   //   const density = population / size;
-  return {  subject, status, start_date, end_date, assigned_user, uid };
+  return { subject, status, start_date, end_date, assigned_user, uid };
 }
 
 const rows = [
   createData(
-    
     "Design Sprint",
     "Executed",
     "01-Oct-2024",
@@ -64,7 +55,6 @@ const rows = [
     "1"
   ),
   createData(
-   
     "Mention Bugs",
     "Scheduled",
     "01-Oct-2024",
@@ -73,7 +63,6 @@ const rows = [
     "2"
   ),
   createData(
-    
     "Ui Design",
     "Completed",
     "01-Oct-2024",
@@ -82,7 +71,6 @@ const rows = [
     "3"
   ),
   createData(
-    
     "Learn AI",
     "Scheduled",
     "01-Oct-2024",
@@ -91,6 +79,16 @@ const rows = [
     "4"
   ),
 ];
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    // backgroundColor: theme.palette.common.black,
+    color: "#7E838F",
+    borderBottom: "2px solid #C1CADB",
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
 
 const SuggestedKnowledgeTable = () => {
   const theme = useTheme();
@@ -131,31 +129,25 @@ const SuggestedKnowledgeTable = () => {
                 "& .MuiTableCell-root": {
                   bgcolor: theme.palette.primary.cardLightBg,
                   // borderBottom: "1px solid #E0E0E0",
-                  borderBottom: `2px solid ${theme.palette.primary.border2}`
-
                 },
               }}
             >
-              <TableRow
-                sx={{
-                  borderBottom: "2px solid red", // Set the border style and color
-                  "& .css-15uwx9v-MuiTableCell-root": {borderBottom: "none",}, 
-                  "& .css-1bofi2j-MuiTableCell-root": {borderBottom: "none"},
-                }}
-              >
-                {columns.map((column) => (
-                  <TableCell
-                  sx={{ borderBottom: "none","& .css-15uwx9v-MuiTableCell-root": {borderBottom: "none", }, "& .css-1bofi2j-MuiTableCell-root": {borderBottom: "none"}}}
+              <TableRow>
+                {columns.map((column, index) => (
+                  <StyledTableCell
                     key={column.id}
                     align={column.align}
-                    style={{ minWidth: column.minWidth }}
+                    // style={{ minWidth: column.minWidth }}
+                    sx={{
+                      minWidth: index === 0 ? "max-content" : column.minWidth,
+                    }}
                   >
                     {column.label}
-                  </TableCell>
+                  </StyledTableCell>
                 ))}
               </TableRow>
             </TableHead>
-            <TableBody sx={{"& .css-17uzi0w-MuiTableCell-root": {borderBottom: "none"}}}>
+            <TableBody>
               {rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
@@ -176,16 +168,14 @@ const SuggestedKnowledgeTable = () => {
                             sx={{
                               fontWeight:
                                 activeRow === row.uid ? "bold" : "normal",
-                              borderBottom: "none",
-                               
                             }}
                           >
                             {index === 0 ? (
-                              activeRow === row.uid? (
+                              activeRow === row.uid ? (
                                 <StarIcon />
                               ) : (
                                 <StarBorderIcon />
-                              ) 
+                              )
                             ) : index === 2 ? (
                               <Typography
                                 sx={{
@@ -212,7 +202,6 @@ const SuggestedKnowledgeTable = () => {
                             ) : (
                               value
                             )}
-                            
                           </TableCell>
                         );
                       })}

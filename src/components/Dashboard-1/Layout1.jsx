@@ -3,12 +3,14 @@ import React, { useState, useEffect } from "react";
 import Topbar from "./Topbar/Topbar";
 import Sidebar from "./Sidebar/Sidebar";
 import { useLocation, useNavigate } from "react-router-dom";
+import TopbarofCasePage from "./Topbar/TopbarofCasePage";
 
 const Layout1 = ({ children }) => {
   const theme = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
+  const changeHeader = location.pathname.includes('cases') 
 
   // Detect scroll event to toggle background color
   useEffect(() => {
@@ -45,7 +47,7 @@ const Layout1 = ({ children }) => {
             transition: "background-color 0.3s ease", // Smooth transition when scroll changes
           }}
         >
-          <Topbar />
+          {changeHeader ? <TopbarofCasePage/>: <Topbar />}
         </Box>
         {/* Main content area */}
         <Box className="flex gap-x-7">

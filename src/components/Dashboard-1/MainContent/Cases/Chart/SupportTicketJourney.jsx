@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Chart from "react-apexcharts";
 
-const SupportTicketJourney = (color = "#83a2db") => {
-  // eslint-disable-next-line no-unused-vars
+const SupportTicketJourney = ({ data = [80, 20], colors = ["#83a2db", "#83a2db"] }) => {
   const [options, setOptions] = useState({
     chart: {
       type: "donut",
@@ -37,20 +36,7 @@ const SupportTicketJourney = (color = "#83a2db") => {
         },
       },
     },
-    // fill: {
-    //   type: 'gradient',
-    //   gradient: {
-    //     shade: 'light',
-    //     type: 'diagonal1',
-    //     shadeIntensity: 0.5,
-    //     gradientToColors: ['#EA6863', '#EA6863'],
-    //     inverseColors: true,
-    //     opacityFrom: 1,
-    //     opacityTo: 1,
-    //     stops: [50, 100]
-    //   }
-    // },
-    colors: ["#83a2db", "#83a2db"],
+    colors: colors, // Apply dynamic colors here
     dataLabels: {
       enabled: false,
     },
@@ -65,13 +51,10 @@ const SupportTicketJourney = (color = "#83a2db") => {
     },
   });
 
-  // eslint-disable-next-line no-unused-vars
-  const [series, setSeries] = useState([80, 20]);
-
   return (
-    <div className=" flex items-center justify-center ">
+    <div className="flex items-center justify-center">
       <div className="w-full sm:w-[400px] md:w-[400px] lg:w-[600px]">
-        <Chart options={options} series={series} type="donut" width="100%" />
+        <Chart options={options} series={data} type="donut" width="100%" />
       </div>
     </div>
   );
